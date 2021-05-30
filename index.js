@@ -7,5 +7,7 @@ const app = express();
 app.use("/admin", admin);
 app.use("/", client);
 
-app.listen(3000);
+app.listen(8000);
+
+//no DB yet
 
