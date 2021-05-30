@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head><title>The Good Shepherd Home Care, LLC</title>
+
+      <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+    <link href="./css/styles.css" type="text/css" rel="stylesheet">
+    <script> 
+    function selectHandler() {
+        var x = document.getElementById("contacttime").value;
+        if(x=="other") {    
+            document.getElementById("specify").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"My best contact time is...\">";
+      }
+      else {
+        document.getElementById("specify").innerHTML ="";
+      }
+    }
+      </script>
+
+<script> 
+  function repHandler() {
+      var x = document.getElementById("rep").value;
+      if(x=="other") {    
+          document.getElementById("repn").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"I learned about you from...\">";
+    }
+    else {
+      document.getElementById("repn").innerHTML ="";
+    }
+  }
+    </script>
+
+    </head>
+    <body>
+
+      <div class="container-fluid">
+        <a href="index.html" class="active"><img src="./img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>
+            <a href="index.html">Home</a>
+              <a href="about.html">About</a>
+              <a href="testimonials.html">Testimonials</a>
+              <a href="services.html">Services</a>
+              <a href="faq.html">FAQ</a>
+              <a href="careers.html">Careers</a>   
+            </div>
+
+      <div id="all" class="container-fluid">
+        <br>
+        <br>     
+        <h1>CONTACT US</h1>
+        <br>
+        <p>Thank you for your inquiry. Please fill out the form below and we'll get back to you within 2-3 business days.</p>
+        <p>If your request is urgent, please do give us a call at (630)696-5755 and we'll be happy to assist you sooner!</p>
+        <br>
+    <form action="contact2.html">
+      <h3>Enter your contact details:</h3>
+        <label for="firstname">First Name:</label>
+        <input type="text" name="firstname" id="firstname" placeholder="Jane" required>
+        <br>
+        <label for="lastname">Last Name:</label>
+        <input type="text" name="lastname" id="lastname" placeholder="Doe" required>
+        <br>
+        <label for="email">Email Address:</label> 
+        <input type="text" name="email" id="email" placeholder="somebody@example.com">
+        <br>
+        <label for="phone">Phone Number:</label>
+        <input type="number" name="phone" id="phone" placeholder="1234567890" required>
+        <br>
+        <label for="zip">ZIP/Postal Code:</label>
+        <input type="number" name="zipcode" id="zip" placeholder="60532" required>
+        <br>
+        <br>
+        <h3>Service(s) you're interested in <span>(select all that apply)</span>:</h3>
+        <input type="checkbox">Personal Care</input>
+        <br>
+        <input type="checkbox">Companion/sitter</input>
+        <br>
+        <input type="checkbox">Homemaking</input>
+        <br>
+        <br>        
+        <label for="contacttime"><h3>Best contact time:</h3></label>
+        <select name="contacttime" id="contacttime" onchange="selectHandler()" required>
+        <option value="anytime">Any time</option>
+        <option value="morning">Morning 9:00am-12:00pm</option>
+        <option value="afternoon">Afternoon 1:00pm-5:00pm</option>
+        <option value="other">Other - please specify</option>
+        </select>
+        <div id="specify"></div>        
+        <br>
+        
+        <label for="message"><h3>Include a message <span>(optional)</span>:</h3></label>
+        <br>
+        <textarea id="message" placeholder="Type your message here."></textarea>
+        <br>
+        <br>
+        <label for="rep"><h3>How did you learn about us?</h3></label>
+        <select name="rep" id="rep" onchange="repHandler()" required;>
+          <option value="friend" selected>Friend/relative/acquaintance</option>
+          <option value="church">Church bulletin board</option>
+          <option value="assistedliving">Assisted living/retirement home</option>
+          <option value="nursing">Nursing/healthcare facility</option>
+          <option value="magazine">Magazine advertisement</option>
+          <option value="internet">Internet search</option>
+          <option value="other" id="other">Other - please specify</option>
+        </select>
+        <div id="repn"></div>
+        
+        <br>
+        <label for="communications" name="comms"><h3>Would you like to be added to our mailing list to receive service updates and announcements? <span>You can change your preference by informing us at any time.</span></h3></label>
+        <br>
+        <input type="radio" name="comms" checked>Yes, add me to your mailing list.</input>
+        <br>
+        <input type="radio" name="comms">No, don't add me to your mailing list. (You will still receive communications related to your transactions.)</input>
+        <br>
+        <br>
+        <img src="captchaGoesHere" id="captchaimg" >
+        <br>
+       <label for="message">Enter the code above here:</label>
+       <input id="6_letters_code" name="6_letters_code" type="text">
+       <br>
+       <input type="submit" value="SUBMIT">    
+    </form>
+    <br>
+    <br>
+        <h2>Office Address</h2>
+        <p>Our office was formerly located on 906 Lacey Avenue Suite 209, Lisle, Illinois 60532, where we have been for several years. Due to difficulties brought about by the COVID-19 pandemic, we have closed this location and are temporarily operating from home in Illinois. Our contact number remains the same. Please also feel free to send us a message through the contact form above.</p>
+        <br>
+        <h3>Phone Number</h3>
+        <p>(630)696-5755</p>
+        <br>
+        <h3> Office Hours</h3>
+        <p>Monday to Friday: 9:00am to 5:00pm </p>
+        <p>Home care services available 24 hours / seven (7) days a week</p>
+        <br>
+      </div>
+
+      <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+       
+    </body>
+</html>

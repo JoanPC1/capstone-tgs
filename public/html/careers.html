@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head><title>The Good Shepherd Home Care, LLC</title>
+
+      <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="./css/styles.css" type="text/css" rel="stylesheet">
+
+    <script> 
+        function selectHandler() {
+            var x = document.getElementById("contacttime").value;
+            if(x=="other") {    
+                document.getElementById("specify").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"My best contact time is...\">";
+          }
+          else {
+            document.getElementById("specify").innerHTML ="";
+          }
+        }
+          </script>
+
+<script> 
+    function repHandler() {
+        var x = document.getElementById("rep").value;
+        if(x=="other") {    
+            document.getElementById("repn").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"I learned about you from...\">";
+      }
+      else {
+        document.getElementById("repn").innerHTML ="";
+      }
+    }
+      </script>
+    </head>
+        
+<body>
+  <div class="container-fluid">
+    <a href="index.html" class="active"><img src="./img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>
+     <a href="index.html">Home</a>
+     <a href="about.html">About</a>
+     <a href="testimonials.html">Testimonials</a>
+     <a href="services.html">Services</a>
+     <a href="faq.html">FAQ</a>
+     <a href="contact.html">Contact</a>
+    </div>
+
+    <div id="all" class="container-fluid">
+    <br>    
+    <br>
+    <h1>WORK WITH US</h1>
+    <br>
+    <p>The Good Shepherd Home Care, LLC is an equal opportunity employer. We offer competitive pay and skills training for employees.</p>
+    <p>Thank you for your interest in working with us. Due to the volume of applications that we receive, we will only be able to contact applicants who are selected for further consideration. We may keep your application on file and contact you as opportunities arise.</p>
+    <br>
+    <form action="careers2.html">
+        <h3>Enter your contact details:</h3>
+        <label for="firstname">First Name:</label>
+        <input type="text" name="firstname" id="firstname" placeholder="Jane" required>
+        <br>
+        <label for="lastname">Last Name:</label>
+        <input type="text" name="lastname" id="lastname" placeholder="Doe" required>
+        <br>
+        <label for="email">Email Address:</label> 
+        <input type="text" name="email" id="email" placeholder="somebody@example.com" required>
+        <br>
+        <label for="phone">Phone Number:</label>
+        <input type="number" name="phone" id="phone" placeholder="1234567890" required>
+        <br>
+        <label for="zip">ZIP/Postal Code:</label>
+        <input type="number" name="zipcode" id="zip" placeholder="60532" required>
+        <br>
+        <br>    
+        <h3>Work schedule preferences <span>(select all that apply)</span>:</h3>
+        <label for="shifthours"><h4>Work shift(s):</h4></label>
+        <br>
+        <input type="checkbox">Morning</input>
+        <br>
+        <input type="checkbox">Afternoon</input>
+        <br>
+        <input type="checkbox">Evening</input>
+        <br>
+        <input type="checkbox">Overnight</input>
+        <br>
+        <br>
+        <label for="shiftdays"><h4>Work day(s):</h4></label>
+        <br>
+        <input type="checkbox">Sunday</input>
+        <br>
+        <input type="checkbox">Monday</input>
+        <br>
+        <input type="checkbox">Tuesday</input>
+        <br>
+        <input type="checkbox">Wednesday</input>
+        <br>
+        <input type="checkbox">Thursday</input>
+        <br>
+        <input type="checkbox">Friday</input>
+        <br>
+        <input type="checkbox">Saturday</input>   
+        <br>
+        <br>
+        <label for="skills"><h3>Skills <span>(select all that apply)</span>:</h3></label>
+        <br>
+        <input type="checkbox">Personal Care</input>
+        <br>
+        <input type="checkbox">Companion/sitter</input>
+        <br>
+        <input type="checkbox">Homemaking</input>
+        <br>
+        <br>
+        <label for="workpermit" name="workp"><h3>Are you legally authorized to work in the United States? <span>We can only accept applications from persons authorized to work in the United States.</span></h3></label>
+        <br>
+        <input type="radio" name="workp" checked>Yes, I am a citizen/permanent resident / I have a valid work permit.</input>
+        <br>
+        <input type="radio" name="workp">No, I am not authorized to work in the United States.</input>
+        <br>
+        <br>
+        <label for="contacttime"><h3>Best contact time:</h3></label>
+        <select name="contacttime" id="contacttime" onchange="selectHandler()" required;>
+        <option value="anytime" selected>Any time</option>
+        <option value="morning">Morning 9:00am-12:00pm</option>
+        <option value="afternoon">Afternoon 1:00pm-5:00pm</option>
+        <option value="other" id="other">Other - please specify</option>
+        </select>
+        <div id="specify"></div>
+        <br>
+                  
+        <h3>Upload your resume:</h3>
+        <input type="file" required>
+        <br>
+        <br>
+        <h3>Upload your cover letter:</h3>
+        <input type="file" required>
+        <br>
+        <br>
+        <label for="rep"><h3>How did you learn about us?</h3></label>
+        <select name="rep" id="rep" onchange="repHandler()" required;>
+        <option value="friend" selected>Friend/relative/acquaintance</option>
+        <option value="church">Church bulletin board</option>
+        <option value="assistedliving">Assisted living/retirement home</option>
+        <option value="nursing">Nursing/healthcare facility</option>
+        <option value="magazine">Magazine advertisement</option>
+        <option value="internet">Internet search</option>
+        <option value="other" id="other">Other - please specify</option>
+        </select>
+        <div id="repn"></div>
+        <br>
+        <label for="communications" name="comms"><h3>Would you like to be added to our mailing list to receive service updates and announcements? <span>You can change your preference by informing us at any time.</span></h3></label>
+        <br>
+        <input type="radio" name="comms" checked>Yes, add me to your mailing list.</input>
+        <br>
+        <input type="radio" name="comms">No, don't add me to your mailing list. (You will still receive communications related to your transactions.)</input>
+        <br>
+        <br>
+        <label for="declaration"><input type="checkbox" id="declaration" required> <b>Declaration and Authorization</b></label>
+        <p>I hereby declare that all information I have provided in this application is true and correct. I understand that any willful dishonesty or misrepresentation may result in the refusal of this application or immediate termination of my employment. It shall be my responsibility to ensure that all information I have provided is up-to-date, and to update The Good Shepherd Home Care, LLC promptly of any changes to said information. I understand that I am solely liable for any and all damages resulting from any misrepresentation in my application.</p>
+        <p>I authorize The Good Shepherd Home Care, LLC to retain my application for future employment opportunities, and to conduct background, reference, health and criminal checks, and other procedures relevant to my application, in accordance with applicable laws on the collection, use and disclosure of personal information.</p> 
+        <br>
+        <img src="captchaGoesHere" id="captchaimg" >
+        <br>
+       <label for="message">Enter the code above here:</label>
+       <input id="6_letters_code" name="6_letters_code" type="text">
+       <br>
+       <input type="submit" value="SUBMIT">
+    </form>
+    <br>
+    <br>
+    </div>
+
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  crossorigin="anonymous"
+></script>
+
+</body>
+</html>
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head><title>The Good Shepherd Home Care, LLC</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      
+        <link href="./css/styles.css" type="text/css" rel="stylesheet">
+</head>
+    <body>
+      <div class="container-fluid">
+        <a href="index.html" class="active"><img src="./img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>         
+            </div>
+
+      <div id="all" class="container-fluid">
+      <br>
+      <br>
+      <h1>ADMINISTRATOR</h1>
+      <br>
+      <form action="createaccount2.html" name="createaccount" method="post">
+        <h3>Enter your details to create an account:</h3>
+        <label for="firstname">First Name:</label>
+        <input type="text" name="firstname" id="firstname" placeholder="Jane" required>
+        <br>
+        <label for="lastname">Last Name:</label>
+        <input type="text" name="lastname" id="lastname" placeholder="Doe" required>
+        <br>
+        <label for="email">Email Address:</label> 
+        <input type="text" name="email" id="email" placeholder="somebody@example.com">
+        <br>
+        <label for="username">Create a username:</label>
+        <input type="text" name="username" placeholder="JaneDoe85" required>
+        <br>
+        <label for="password">Create a password:</label>
+        <input type="text" name="password" placeholder="********" required>
+        <p>Passwords must contain at least eight (8) characters.</p>
+        <br> 
+        <div class="secretthings"><label for="secrets"><h3>Secret question:</h3></label>
+          <br>
+          <select id="secrets">
+            <option value="friend" selected>Who was your childhood best friend?
+            <option value="spouse">Where did you meet your spouse?</option> 
+            <option value="person">Which famous person do you want to meet?</option> 
+            <option value="teacher">Who was your favorite teacher?</option> 
+          </select>
+          <br>
+          <br>
+          <p>Answer: <input type="text" required></p>
+          </div>
+          <br>       
+        <label for="declaration"><input type="checkbox" id="declaration" required> <b>Declaration</b></label>
+        <p>I hereby declare that all information I have provided in this application is true and correct. I understand that any willful dishonesty or misrepresentation may result in the immediate termination of my employment. It shall be my responsibility to ensure that all information I have provided is up-to-date, and to update The Good Shepherd Home Care, LLC promptly of any changes to said information.</p>
+        <p>I declare that I will only use all information contained herein, and any other information that I am allowed access to, for lawful purposes. I understand that I will be solely liable for any and all damages resulting from my inappropriate or unlawful use or disclosure of said information.</p>
+        <br>
+        <img src="captchaGoesHere" id="captchaimg" >
+        <br>
+       <label for="message">Enter the code above here:</label>
+       <input id="6_letters_code" name="6_letters_code" type="text">
+       <br>
+       <input type="submit" value="SUBMIT">
+       <br>
+       <a href="login.html">Back to log-in page</a>
+     </form>
+    <br>
+    <br>
+    </div>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  crossorigin="anonymous"></script>
+    </body>
+</html>
