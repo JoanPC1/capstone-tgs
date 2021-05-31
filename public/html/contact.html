@@ -7,7 +7,7 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         
-    <link href="./css/styles.css" type="text/css" rel="stylesheet">
+    <link href="../css/styles.css" type="text/css" rel="stylesheet">
     <script> 
     function selectHandler() {
         var x = document.getElementById("contacttime").value;
@@ -36,13 +36,13 @@
     <body>
 
       <div class="container-fluid">
-        <a href="index.html" class="active"><img src="./img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>
-            <a href="index.html">Home</a>
-              <a href="about.html">About</a>
-              <a href="testimonials.html">Testimonials</a>
-              <a href="services.html">Services</a>
-              <a href="faq.html">FAQ</a>
-              <a href="careers.html">Careers</a>   
+        <a href="/" class="active"><img src="../img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>
+            <a href="/">Home</a>
+              <a href="about">About</a>
+              <a href="testimonials">Testimonials</a>
+              <a href="services">Services</a>
+              <a href="faq">FAQ</a>
+              <a href="careers">Careers</a>   
             </div>
 
       <div id="all" class="container-fluid">
@@ -53,7 +53,7 @@
         <p>Thank you for your inquiry. Please fill out the form below and we'll get back to you within 2-3 business days.</p>
         <p>If your request is urgent, please do give us a call at (630)696-5755 and we'll be happy to assist you sooner!</p>
         <br>
-    <form action="contact2.html">
+    <form action="http://localhost:3000/processcontact">
       <h3>Enter your contact details:</h3>
         <label for="firstname">First Name:</label>
         <input type="text" name="firstname" id="firstname" placeholder="Jane" required>
@@ -72,11 +72,15 @@
         <br>
         <br>
         <h3>Service(s) you're interested in <span>(select all that apply)</span>:</h3>
-        <input type="checkbox">Personal Care</input>
+        <input type="checkbox" checked>Personal Care</input>
         <br>
         <input type="checkbox">Companion/sitter</input>
         <br>
         <input type="checkbox">Homemaking</input>
+        <br>
+        <input type="checkbox">I'm not sure</input> (We'll help you figure out your options!)
+        <br>
+        <input type="checkbox">I want to ask about something else</input>
         <br>
         <br>        
         <label for="contacttime"><h3>Best contact time:</h3></label>
@@ -114,7 +118,7 @@
         <input type="radio" name="comms">No, don't add me to your mailing list. (You will still receive communications related to your transactions.)</input>
         <br>
         <br>
-        <img src="captchaGoesHere" id="captchaimg" >
+        <img src="captchaGoesHere" id="captchaimg" > <!--add captcha here-->
         <br>
        <label for="message">Enter the code above here:</label>
        <input id="6_letters_code" name="6_letters_code" type="text">

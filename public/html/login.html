@@ -7,11 +7,11 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       
-        <link href="./css/styles.css" type="text/css" rel="stylesheet">
+        <link href="../css/styles.css" type="text/css" rel="stylesheet">
 </head>
     <body>
       <div class="container-fluid">
-        <a href="index.html" class="active"><img src="./img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>
+        <a href="/" class="active"><img src="../img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>
           </div>
 
       <div id="all" class="container-fluid">
@@ -19,7 +19,7 @@
       <br>
       <h1>ADMINISTRATOR</h1>
       <br>
-      <form action="accountapproval.html">
+      <form action="http://localhost:3000/admin">
         <h3>Log in to continue:</h3>
         <br>
         <label for="username">Username:</label>
@@ -28,7 +28,7 @@
         <label for="password">Password (case-sensitive):</label>
         <input type="text" name="password" placeholder="********" required>
         <br>
-        <img src="captchaGoesHere" id="captchaimg" >
+        <img src="captchaGoesHere" id="captchaimg" > <!---add captcha here-->
         <br>
        <label for="message">Enter the code above here:</label>
        <input id="6_letters_code" name="6_letters_code" type="text">
@@ -36,9 +36,9 @@
         <input type="submit" value="SUBMIT">
         <br>
         <br>
-        <a href="createaccount1.html">Create new account</a>
+        <a href="admin/createaccount">Create new account</a>
         <br>
-        <a href="password1.html">I forgot my password</a>
+        <a href="admin/forgotpassword">I forgot my password</a>
     </form>
     <br>
     <br>

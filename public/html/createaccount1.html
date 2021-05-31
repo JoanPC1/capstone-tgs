@@ -7,11 +7,11 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       
-        <link href="./css/styles.css" type="text/css" rel="stylesheet">
+        <link href="../css/styles.css" type="text/css" rel="stylesheet">
 </head>
     <body>
       <div class="container-fluid">
-        <a href="index.html" class="active"><img src="./img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>         
+        <a href="/" class="active"><img src="../img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>         
             </div>
 
       <div id="all" class="container-fluid">
@@ -19,7 +19,7 @@
       <br>
       <h1>ADMINISTRATOR</h1>
       <br>
-      <form action="createaccount2.html" name="createaccount" method="post">
+      <form action="http://localhost:3000/admin/submitaccount" name="createaccount" method="post">
         <h3>Enter your details to create an account:</h3>
         <label for="firstname">First Name:</label>
         <input type="text" name="firstname" id="firstname" placeholder="Jane" required>
@@ -54,14 +54,14 @@
         <p>I hereby declare that all information I have provided in this application is true and correct. I understand that any willful dishonesty or misrepresentation may result in the immediate termination of my employment. It shall be my responsibility to ensure that all information I have provided is up-to-date, and to update The Good Shepherd Home Care, LLC promptly of any changes to said information.</p>
         <p>I declare that I will only use all information contained herein, and any other information that I am allowed access to, for lawful purposes. I understand that I will be solely liable for any and all damages resulting from my inappropriate or unlawful use or disclosure of said information.</p>
         <br>
-        <img src="captchaGoesHere" id="captchaimg" >
+        <img src="captchaGoesHere" id="captchaimg" > <!---add captcha here-->
         <br>
        <label for="message">Enter the code above here:</label>
        <input id="6_letters_code" name="6_letters_code" type="text">
        <br>
        <input type="submit" value="SUBMIT">
        <br>
-       <a href="login.html">Back to log-in page</a>
+       <a href="admin/login">Back to log-in page</a>
      </form>
     <br>
     <br>
