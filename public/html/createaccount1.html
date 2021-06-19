@@ -28,17 +28,18 @@
         <input type="text" name="lastname" id="lastname" placeholder="Doe" required>
         <br>
         <label for="email">Email Address:</label> 
-        <input type="text" name="email" id="email" placeholder="somebody@example.com">
+        <input type="email" name="email" id="email" placeholder="somebody@example.com">
         <br>
         <label for="phone">Phone Number:</label> 
         <input type="text" name="phone" id="phone" placeholder="1234567890">
         <br>
         <label for="username">Create a username:</label>
-        <input type="text" name="username" placeholder="JaneDoe85" required>
+        <input type="text" pattern=".{4,10}" name="username" placeholder="JaneDoe85" required title="Username must be 4 to 10 characters">
+        <p>Username must contain a minimum of 4 and a maximum of 10 characters.</p>
         <br>
         <label for="password">Create a password:</label>
         <input type="password" pattern=".{8,12}" name="password" placeholder="********" required title="Password must be 8 to 12 characters">
-        <p>Passwords must contain a minimum of 8 and a maximum of 12 characters.</p>
+        <p>Password must contain a minimum of 8 and a maximum of 12 characters.</p>
         <br> 
         <div class="secretthings"><label for="secrets"><h3>Secret question:</h3></label>
           <br>
