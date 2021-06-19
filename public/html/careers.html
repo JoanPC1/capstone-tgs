@@ -10,7 +10,7 @@
 
     <script> 
         function selectHandler() {
-            var x = document.getElementById("contacttime").value;
+            var x = document.getElementById("bestcontacttime").value;
             if(x=="other") {    
                 document.getElementById("specify").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"My best contact time is...\">";
           }
@@ -21,13 +21,13 @@
           </script>
 
 <script> 
-    function repHandler() {
-        var x = document.getElementById("rep").value;
+    function sourceHandler() {
+        var x = document.getElementById("source").value;
         if(x=="other") {    
-            document.getElementById("repn").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"I learned about you from...\">";
+            document.getElementById("sourcespecify").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"I learned about you from...\">";
       }
       else {
-        document.getElementById("repn").innerHTML ="";
+        document.getElementById("sourcespecify").innerHTML ="";
       }
     }
       </script>
@@ -52,7 +52,7 @@
     <p>The Good Shepherd Home Care, LLC is an equal opportunity employer. We offer competitive pay and skills training for employees.</p>
     <p>Thank you for your interest in working with us. Due to the volume of applications that we receive, we will only be able to contact applicants who are selected for further consideration. We may keep your application on file and contact you as opportunities arise.</p>
     <br>
-    <form action="http://localhost:3000/processapplication">
+    <form action="http://localhost:3000/processapplication" method="POST">
         <h3>Enter your contact details:</h3>
         <label for="firstname">First Name:</label>
         <input type="text" name="firstname" id="firstname" placeholder="Jane" required>
@@ -66,57 +66,69 @@
         <label for="phone">Phone Number:</label>
         <input type="number" name="phone" id="phone" placeholder="1234567890" required>
         <br>
+        <label for="streetnumber">Street Number:</label>
+        <input type="number" name="streetnumber" id="streetnumber" placeholder="123" required>
+        <br>
+        <label for="streetname">Street Name:</label>
+        <input type="text" name="streetname" id="streetname" placeholder="Lacey Avenue" required>
+        <br>
+        <label for="city">City:</label>
+        <input type="text" name="city" id="city" placeholder="Lisle" required>
+        <br>
+        <label for="state">State:</label>
+        <input type="text" name="state" id="state" placeholder="Illinois" required>
+        <br>
         <label for="zip">ZIP/Postal Code:</label>
         <input type="number" name="zipcode" id="zip" placeholder="60532" required>
         <br>
         <br>    
         <h3>Work schedule preferences <span>(select all that apply)</span>:</h3>
-        <label for="shifthours"><h4>Work shift(s):</h4></label>
+        <label for="workshifts"><h4>Work shift(s):</h4></label>
         <br>
-        <input type="checkbox" checked>Morning</input>
+        <input type="checkbox" name="workshifts" checked>Morning</input>
         <br>
-        <input type="checkbox">Afternoon</input>
+        <input type="checkbox" name="workshifts">Afternoon</input>
         <br>
-        <input type="checkbox">Evening</input>
+        <input type="checkbox" name="workshifts">Evening</input>
         <br>
-        <input type="checkbox">Overnight</input>
+        <input type="checkbox" name="workshifts">Overnight</input>
         <br>
         <br>
-        <label for="shiftdays"><h4>Work day(s):</h4></label>
+        <label for="workdays"><h4>Work day(s):</h4></label>
         <br>
-        <input type="checkbox" checked>Sunday</input>
+        <input type="checkbox" name="workdays" checked>Sunday</input>
         <br>
-        <input type="checkbox">Monday</input>
+        <input type="checkbox" name="workdays">Monday</input>
         <br>
-        <input type="checkbox">Tuesday</input>
+        <input type="checkbox" name="workdays">Tuesday</input>
         <br>
-        <input type="checkbox">Wednesday</input>
+        <input type="checkbox" name="workdays">Wednesday</input>
         <br>
-        <input type="checkbox">Thursday</input>
+        <input type="checkbox" name="workdays">Thursday</input>
         <br>
-        <input type="checkbox">Friday</input>
+        <input type="checkbox" name="workdays">Friday</input>
         <br>
-        <input type="checkbox">Saturday</input>   
+        <input type="checkbox" name="workdays">Saturday</input>   
         <br>
         <br>
         <label for="skills"><h3>Skills <span>(select all that apply)</span>:</h3></label>
         <br>
-        <input type="checkbox" checked>Personal Care</input>
+        <input type="checkbox" name="skills" checked>Personal Care</input>
         <br>
-        <input type="checkbox">Companion/sitter</input>
+        <input type="checkbox" name="skills">Companion/sitter</input>
         <br>
-        <input type="checkbox">Homemaking</input>
-        <br>
-        <br>
-        <label for="workpermit" name="workp"><h3>Are you legally authorized to work in the United States? <span>We can only accept applications from persons authorized to work in the United States.</span></h3></label>
-        <br>
-        <input type="radio" name="workp" checked>Yes, I am a citizen/permanent resident / I have a valid work permit.</input>
-        <br>
-        <input type="radio" name="workp">No, I am not authorized to work in the United States.</input>
+        <input type="checkbox" name="skills">Homemaking</input>
         <br>
         <br>
-        <label for="contacttime"><h3>Best contact time:</h3></label>
-        <select name="contacttime" id="contacttime" onchange="selectHandler()" required;>
+        <label for="workpermit"><h3>Are you legally authorized to work in the United States? <span>We can only accept applications from persons authorized to work in the United States.</span></h3></label>
+        <br>
+        <input type="radio" name="workpermit" checked>Yes, I am a citizen/permanent resident / I have a valid work permit.</input>
+        <br>
+        <input type="radio" name="workpermit">No, I am not authorized to work in the United States.</input>
+        <br>
+        <br>
+        <label for="bestcontacttime"><h3>Best contact time:</h3></label>
+        <select name="bestcontacttime" id="contacttime" onchange="selectHandler()" required;>
         <option value="anytime" selected>Any time</option>
         <option value="morning">Morning 9:00am-12:00pm</option>
         <option value="afternoon">Afternoon 1:00pm-5:00pm</option>
@@ -126,15 +138,15 @@
         <br>
                   
         <h3>Upload your resume:</h3>
-        <input type="file" required>
+        <input type="file" name="resumes" required>
         <br>
         <br>
         <h3>Upload your cover letter:</h3>
-        <input type="file" required>
+        <input type="file" name="coverletter" required>
         <br>
         <br>
-        <label for="rep"><h3>How did you learn about us?</h3></label>
-        <select name="rep" id="rep" onchange="repHandler()" required;>
+        <label for="source"><h3>How did you learn about us?</h3></label>
+        <select name="source" id="source" onchange="sourceHandler()" required;>
         <option value="friend" selected>Friend/relative/acquaintance</option>
         <option value="church">Church bulletin board</option>
         <option value="assistedliving">Assisted living/retirement home</option>
@@ -143,23 +155,23 @@
         <option value="internet">Internet search</option>
         <option value="other" id="other">Other - please specify</option>
         </select>
-        <div id="repn"></div>
+        <div id="sourcespecify"></div>
         <br>
-        <label for="communications" name="comms"><h3>Would you like to be added to our mailing list to receive service updates and announcements? <span>You can change your preference by informing us at any time.</span></h3></label>
+        <label for="mailinglist"><h3>Would you like to be added to our mailing list to receive service updates and announcements? <span>You can change your preference by informing us at any time.</span></h3></label>
         <br>
-        <input type="radio" name="comms" checked>Yes, add me to your mailing list.</input>
+        <input type="radio" name="mailinglist" checked>Yes, add me to your mailing list.</input>
         <br>
-        <input type="radio" name="comms">No, don't add me to your mailing list. (You will still receive communications related to your transactions.)</input>
+        <input type="radio" name="mailinglist">No, don't add me to your mailing list. (You will still receive communications related to your transactions.)</input>
         <br>
         <br>
-        <label for="declaration"><input type="checkbox" id="declaration" required> <b>Declaration and Authorization</b></label>
+        <label for="declaration"><input type="checkbox" name="declaration" id="declaration" required> <b>Declaration and Authorization</b></label>
         <p>I hereby declare that all information I have provided in this application is true and correct. I understand that any willful dishonesty or misrepresentation may result in the refusal of this application or immediate termination of my employment. It shall be my responsibility to ensure that all information I have provided is up-to-date, and to update The Good Shepherd Home Care, LLC promptly of any changes to said information. I understand that I am solely liable for any and all damages resulting from any misrepresentation in my application.</p>
         <p>I authorize The Good Shepherd Home Care, LLC to retain my application for future employment opportunities, and to conduct background, reference, health and criminal checks, and other procedures relevant to my application, in accordance with applicable laws on the collection, use and disclosure of personal information.</p> 
         <br>
         <img src="captchaGoesHere" id="captchaimg" > <!--add captcha here-->
         <br>
-       <label for="message">Enter the code above here:</label>
-       <input id="6_letters_code" name="6_letters_code" type="text">
+       <label for="captcha">Enter the code above here:</label>
+       <input id="captcha" name="captcha" type="text">
        <br>
        <input type="submit" value="SUBMIT">
     </form>

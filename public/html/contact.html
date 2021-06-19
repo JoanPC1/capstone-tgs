@@ -10,7 +10,7 @@
     <link href="../css/styles.css" type="text/css" rel="stylesheet">
     <script> 
     function selectHandler() {
-        var x = document.getElementById("contacttime").value;
+        var x = document.getElementById("bestcontacttime").value;
         if(x=="other") {    
             document.getElementById("specify").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"My best contact time is...\">";
       }
@@ -21,13 +21,13 @@
       </script>
 
 <script> 
-  function repHandler() {
-      var x = document.getElementById("rep").value;
+  function sourceHandler() {
+      var x = document.getElementById("source").value;
       if(x=="other") {    
-          document.getElementById("repn").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"I learned about you from...\">";
+          document.getElementById("sourcespecify").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"I learned about you from...\">";
     }
     else {
-      document.getElementById("repn").innerHTML ="";
+      document.getElementById("sourcespecify").innerHTML ="";
     }
   }
     </script>
@@ -53,7 +53,7 @@
         <p>Thank you for your inquiry. Please fill out the form below and we'll get back to you within 2-3 business days.</p>
         <p>If your request is urgent, please do give us a call at (630)696-5755 and we'll be happy to assist you sooner!</p>
         <br>
-    <form action="http://localhost:3000/processcontact">
+    <form action="http://localhost:3000/processcontact" method="POST">
       <h3>Enter your contact details:</h3>
         <label for="firstname">First Name:</label>
         <input type="text" name="firstname" id="firstname" placeholder="Jane" required>
@@ -67,24 +67,24 @@
         <label for="phone">Phone Number:</label>
         <input type="number" name="phone" id="phone" placeholder="1234567890" required>
         <br>
-        <label for="zip">ZIP/Postal Code:</label>
-        <input type="number" name="zipcode" id="zip" placeholder="60532" required>
+        <label for="zipcode">ZIP/Postal Code:</label>
+        <input type="number" name="zipcode" id="zipcode" placeholder="60532" required>
         <br>
         <br>
         <h3>Service(s) you're interested in <span>(select all that apply)</span>:</h3>
-        <input type="checkbox" checked>Personal Care</input>
+        <input type="checkbox" name="servicesinterestedin" checked>Personal Care</input>
         <br>
-        <input type="checkbox">Companion/sitter</input>
+        <input type="checkbox" name="servicesinterestedin">Companion/sitter</input>
         <br>
-        <input type="checkbox">Homemaking</input>
+        <input type="checkbox" name="servicesinterestedin">Homemaking</input>
         <br>
-        <input type="checkbox">I'm not sure</input> (We'll help you figure out your options!)
+        <input type="checkbox" name="servicesinterestedin">I'm not sure</input> (we'll help you figure out your options)
         <br>
-        <input type="checkbox">I want to ask about something else</input>
+        <input type="checkbox" name="servicesinterestedin">I want to ask about something else (specify in the message box below)</input>
         <br>
         <br>        
-        <label for="contacttime"><h3>Best contact time:</h3></label>
-        <select name="contacttime" id="contacttime" onchange="selectHandler()" required>
+        <label for="bestcontacttime"><h3>Best contact time:</h3></label>
+        <select name="bestcontacttime" id="bestcontacttime" onchange="selectHandler()" required>
         <option value="anytime">Any time</option>
         <option value="morning">Morning 9:00am-12:00pm</option>
         <option value="afternoon">Afternoon 1:00pm-5:00pm</option>
@@ -95,11 +95,11 @@
         
         <label for="message"><h3>Include a message <span>(optional)</span>:</h3></label>
         <br>
-        <textarea id="message" placeholder="Type your message here."></textarea>
+        <textarea name="message" id="message" placeholder="Type your message here."></textarea>
         <br>
         <br>
-        <label for="rep"><h3>How did you learn about us?</h3></label>
-        <select name="rep" id="rep" onchange="repHandler()" required;>
+        <label for="source"><h3>How did you learn about us?</h3></label>
+        <select name="source" id="source" onchange="sourceHandler()" required;>
           <option value="friend" selected>Friend/relative/acquaintance</option>
           <option value="church">Church bulletin board</option>
           <option value="assistedliving">Assisted living/retirement home</option>
@@ -108,20 +108,20 @@
           <option value="internet">Internet search</option>
           <option value="other" id="other">Other - please specify</option>
         </select>
-        <div id="repn"></div>
+        <div id="sourcespecify"></div>
         
         <br>
-        <label for="communications" name="comms"><h3>Would you like to be added to our mailing list to receive service updates and announcements? <span>You can change your preference by informing us at any time.</span></h3></label>
+        <label for="mailinglist"><h3>Would you like to be added to our mailing list to receive service updates and announcements? <span>You can change your preference by informing us at any time.</span></h3></label>
         <br>
-        <input type="radio" name="comms" checked>Yes, add me to your mailing list.</input>
+        <input type="radio" name="mailinglist" checked>Yes, add me to your mailing list.</input>
         <br>
-        <input type="radio" name="comms">No, don't add me to your mailing list. (You will still receive communications related to your transactions.)</input>
+        <input type="radio" name="mailinglist">No, don't add me to your mailing list. (You will still receive communications related to your transactions.)</input>
         <br>
         <br>
         <img src="captchaGoesHere" id="captchaimg" > <!--add captcha here-->
         <br>
-       <label for="message">Enter the code above here:</label>
-       <input id="6_letters_code" name="6_letters_code" type="text">
+       <label for="captcha">Enter the code above here:</label>
+       <input id="captcha" name="captcha" type="text">
        <br>
        <input type="submit" value="SUBMIT">    
     </form>
