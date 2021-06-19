@@ -1,6 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
+const mongoose = require("mongoose");
+
+const userAccountSchema = require("../../private/models/useraccounts")
+
+const mongoDB = "mongodb://127.0.0.1/my_database";
+mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 const checkSecurity = (req, res, next) => {
     console.log("Checking security");  
@@ -36,21 +42,31 @@ router.get("/createaccount", function (req,res) {
     res.sendFile(path.join(__dirname, "../html/createaccount1.html"));
 });
 
-//add new account handler
 router.post("/submitaccount", function (req,res) {
-    res.sendFile(path.join(__dirname, "../html/createaccount2.html"));
+    var application = new userAccountSchema;
+    application.firstname = req.body.firstname;
+    application.lastname = req.body.lastname;
+    application.email = req.body.email;
+    application.phone = req.body.phone;
+    application.zipcode = req.body.zipcode;
+    application.username = req.body.username;
+    application.password = req.body.password;
+    application.secretquestion = req.body.secretquestion;
+    application.secretanswer = req.body.secretanswer;
+    application.save().then(savedDoc => {
+        res.sendFile(path.join(__dirname, "../html/createaccount2.html"));
 });
-
+});
 //add email confirmation handler
 router.post("/confirmemail", function (req,res) {
-    res.sendFile(path.join(__dirname, "../html/createaccount3.html"));
+        res.sendFile(path.join(__dirname, "../html/createaccount3.html"));
 });
 
 router.get("/forgotpassword", function (req,res) {
     res.sendFile(path.join(__dirname, "../html/password1.html"));
 });
 
-//add password retrieval code
+//add password reset code
 router.post("/submitemail", function (req,res) {
     res.sendFile(path.join(__dirname, "../html/password2.html"));
 });

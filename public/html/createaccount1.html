@@ -19,7 +19,7 @@
       <br>
       <h1>ADMINISTRATOR</h1>
       <br>
-      <form action="http://localhost:3000/admin/submitaccount" name="createaccount" method="post">
+      <form action="http://localhost:3000/admin/submitaccount" name="createaccount" method="POST">
         <h3>Enter your details to create an account:</h3>
         <label for="firstname">First Name:</label>
         <input type="text" name="firstname" id="firstname" placeholder="Jane" required>
@@ -30,6 +30,9 @@
         <label for="email">Email Address:</label> 
         <input type="text" name="email" id="email" placeholder="somebody@example.com">
         <br>
+        <label for="phone">Phone Number:</label> 
+        <input type="text" name="phone" id="phone" placeholder="1234567890">
+        <br>
         <label for="username">Create a username:</label>
         <input type="text" name="username" placeholder="JaneDoe85" required>
         <br>
@@ -39,7 +42,7 @@
         <br> 
         <div class="secretthings"><label for="secrets"><h3>Secret question:</h3></label>
           <br>
-          <select id="secrets">
+          <select id="secrets" name="secretquestion">
             <option value="friend" selected>Who was your childhood best friend?
             <option value="spouse">Where did you meet your spouse?</option> 
             <option value="person">Which famous person do you want to meet?</option> 
@@ -47,7 +50,7 @@
           </select>
           <br>
           <br>
-          <p>Answer: <input type="text" required></p>
+          <p>Answer: <input type="text" name="secretanswer" required></p>
           </div>
           <br>       
         <label for="declaration"><input type="checkbox" id="declaration" required> <b>Declaration</b></label>
@@ -56,13 +59,13 @@
         <br>
         <img src="captchaGoesHere" id="captchaimg" > <!---add captcha here-->
         <br>
-       <label for="message">Enter the code above here:</label>
-       <input id="6_letters_code" name="6_letters_code" type="text">
+       <label for="captcha">Enter the code above here:</label>
+       <input id="captcha" name="captcha" type="text">
        <br>
        <input type="submit" value="SUBMIT">
        <br>
-       <a href="admin/login">Back to log-in page</a>
      </form>
+     <a href="http://localhost:3000/admin/login">Back to log-in page</a>
     <br>
     <br>
     </div>
