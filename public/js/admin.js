@@ -3,9 +3,14 @@ const router = express.Router();
 const path = require("path");
 const mongoose = require("mongoose");
 
-const userAccountSchema = require("../../private/models/useraccounts")
+
+
+const userAccountSchema = require("../../private/models/useraccounts");
+const jobApplicationSchema = require("../../private/models/jobapplication");
+const customerServiceSchema = require("../../private/models/customerservice");
 
 const mongoDB = "mongodb://127.0.0.1/my_database";
+//const mongoDB  = "mongodb+srv://moshe:WZBdutpa4nM6pLj@cluster0.h6wkr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 const checkSecurity = (req, res, next) => {
@@ -13,9 +18,38 @@ const checkSecurity = (req, res, next) => {
   
     next();
   };
-
+  
+//add filter - do not display approved
 router.get("/", checkSecurity, function(req, res) {
-    res.sendFile(path.join(__dirname, "../html/admin.html"));
+    userAccountSchema.find(function (err, ) {
+        if (err) return console.error(err);
+        // console.log(useraccounts);
+        res.render("useraccount", {users: useraccounts});
+    });
+    //res.sendFile(path.join(__dirname, "../html/admin.html"));
+});
+
+///admin/editappl/editapplicant
+router.post("/editappl/editapplicant", checkSecurity, function(req,res) {
+    var ID = req.body.appID;
+    var id = new mongoose.Types.ObjectId(ID);
+    var test = jobApplicationSchema.findByIdAndUpdate({id}, { applicantnumber: req.body.applicantnumber }, 
+        function(err, result){
+
+            if(err){
+                console.log(err);
+            }
+            else{
+               // res.send(result)
+            console.log(result);
+            };
+    
+        });
+    console.log(req.body.appID);
+    console.log(req.body.applicantnumber);
+    console.log(req.body);
+
+    res.redirect('/admin/app');
 });
 
 router.get("/login", checkSecurity, function(req, res) {
@@ -23,19 +57,41 @@ router.get("/login", checkSecurity, function(req, res) {
 });
 
 router.get("/cs", checkSecurity, function(req, res) {
-    res.sendFile(path.join(__dirname, "../html/csmain.html"));
+    customerServiceSchema.find(function (err, transactions) {
+        if (err) return console.error(err);
+        //console.log(transactions);
+        res.render('customerservice', {transactions: transactions});
+    });
+   //res.sendFile(path.join(__dirname, "../html/csmain.html"));
 });
 
 router.get("/cs0", checkSecurity, function(req, res) {
-    res.sendFile(path.join(__dirname, "../html/cs0.html"));
+    customerServiceSchema.find(function (err, transactions) {
+        if (err) return console.error(err);
+        //console.log(transactions);
+        res.render('cs0', {transactions: transactions});
+    });
+    //res.sendFile(path.join(__dirname, "../html/cs0.html"));
 });
 
 router.get("/app", checkSecurity, function(req, res) {
-    res.sendFile(path.join(__dirname, "../html/applications.html"));
+
+    jobApplicationSchema.find(function (err, applications) {
+        if (err) return console.error(err);
+        //console.log(applications);
+        res.render('application',{applicants: applications});
+    });
+   // res.sendFile(path.join(__dirname, "../html/applications.html"));
+
 });
 
-router.get("/ap0", checkSecurity, function (req, res) {
-    res.sendFile(path.join(__dirname, "../html/ap0.html"));
+router.get("/editappl/:id", checkSecurity, function (req, res) {
+    jobApplicationSchema.findOne({_id: req.params.id}, function (err, applications) {
+        if (err) return console.error(err);
+        //console.log(applications);
+        res.render('ap0',{applicant: applications});
+    });
+    //res.sendFile(path.join(__dirname, "../html/ap0.html"));
 });
 
 router.get("/createaccount", function (req,res) {

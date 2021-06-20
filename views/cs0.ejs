@@ -26,54 +26,56 @@
       <br>
       <div class="table">
           <table>
+            <% transactions.forEach(function(transaction){  %>
               <tr> 
                   <th>Transaction No.</th>
-                  <td>0</td>     
+                  <td><%= transaction.transactionnumber %></td>     
               </tr>
               <tr>
                 <th>Transaction Date/Time</th>
-                <td>MM/DD/YYYY 00:00</td>
+                <td><%= transaction.transactiondate %></td>
             </tr>
               <tr>
                   <th>First Name</th>
-                  <td>Jane</td>
+                  <td><%= transaction.firstname %></td>
               </tr>
               <tr>
                   <th>Last Name</th>
-                  <td>Doe</td>
+                  <td><%= transaction.lastname %></td>
               </tr>
               <tr>
                   <th>Email Address</th>
-                  <td>somebody@example.com</td>
+                  <td><%= transaction.email %></td>
               </tr>
               <tr>
                   <th>Phone Number</th>
-                  <td>1234567890</td>
+                  <td><%= transaction.phone %></td>
               </tr>
               <tr>
                   <th>ZIP Code</th>
-                  <td>60532</td>
+                  <td><%= transaction.zipcode %></td>
               </tr>
               <tr>
                   <th>Services interested in</th>
-                  <td>Personal Care</td>
+                  <td><%= transaction.servicesinterestedin %></td>
               </tr>
               <tr>
                   <th>Best Contact Time</th>
-                  <td>Any time</td>
+                  <td><%= transaction.bestcontacttime %></td>
               </tr>
               <tr>
                   <th>Message</th>
-                  <td>Type your message here.</td>
+                  <td><%= transaction.message %></td>
               </tr>
               <tr>
                   <th>Source</th>
-                  <td>Friend/relative/acquaintance</td>
+                  <td><%= transaction.source %></td>
               </tr>
               <tr>
                   <th>Mailing List</th>
-                  <td>No</td>
+                  <td><%= transaction.mailinglist %></td>
               </tr>
+              <%})%>
           </table>
       </div>
       <br>

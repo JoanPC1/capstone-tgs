@@ -13,7 +13,6 @@ const customerServiceSchema = mongoose.Schema({
     message: String,
     source: String,
     mailinglist: String,
-    action: String
 });
 
-module.exports = mongoose.model('customerService', customerServiceSchema);
+module.exports = mongoose.model("customerService", customerServiceSchema);

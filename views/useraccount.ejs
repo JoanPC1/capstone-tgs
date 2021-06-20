@@ -39,31 +39,31 @@
              <th>Password</th>
              <th>Secret Question</th>
              <th>Secret Answer</th>
-             <th>Approve</th> <!----add internal handler---->
+             
+             <th>Approve</th> <!----add internal handler----> 
              <th>Confirm</th>
              </tr>
             </thead>
             <tbody>
+                <% users.forEach(function(user){  %>
               <tr>
-                <td>0</td>
-                <td>MM/YY/YYYY 00:00</td>
-                <td>Jane</td>
-                <td>Doe</td>
-                <td>somebody@example.com</td>                
-                <td>1234567890</td>
-                <td>60532</td>
-                <td>JaneDoe85</td>
-                <td>********</td>
-                <td>Who is your childhood best friend?</td>
-                <td>Santa Claus</td>
-                <td><label for="approve">Approve?</label>
-                  <select name="approve" id="approve" required>
-                  <option value="yes" selected>Yes</option>
-                  <option value="no">No</option></select></td>
-                <td><input type="checkbox"></td>
-                <td>Yes</td>
-              </tr>
+                <td><%= user.accountnumber %></td>
+                <td><%= user.accountcreationdate %></td>
+                <td><%= user.firstname %></td>
+                <td><%= user.lastname %></td>
+                <td><%= user.email %></td>                
+                <td><%= user.phone %></td>
+                <td><%= user.zipcode %></td>
+                <td><%= user.username %></td>
+                <td><%= user.password %></td>
+                <td><%= user.secretquestion %></td>
+                <td><%= user.secretanswer %></td>
+                <td><%= user.approve %></td>
+                <td><%= user.confirm %></td>
+                <td> <button id='<%=applicant._id.toString()%>' onClick="editid(this.id)"> Edit </button></td>
+             </tr>
             </tbody>
+            <%})%>
             </table>     
       </div>
     </form>

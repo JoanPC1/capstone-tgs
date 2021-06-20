@@ -20,62 +20,105 @@
       <div id="all" class="container-fluid">
       <br>
       <br>
-      <h1>CUSTOMER SERVICE</h1>
+      <h1>JOB APPLICATIONS</h1>
       <br>
-      <h2>Transaction Details</h2>
+      <h2>Applicant Details</h2>
       <br>
+      
+      <form action="editapplicant" method="POST">
       <div class="table">
           <table>
+           
               <tr> 
-                  <th>Transaction No.</th>
-                  <td>0</td>     
+                  <th>Applicant No.</th>
+                  <td><input type='text' name="applicantnumber" id="applicantnumber" value = <%= applicant.applicantnumber %>></input></td>
               </tr>
               <tr>
-                <th>Transaction Date/Time</th>
-                <td>MM/DD/YYYY 00:00</td>
+                <th>Application Date/Time</th>
+                <td><%= applicant.applicationdate %></td>
+               
             </tr>
-              <tr>
+                  <tr>
                   <th>First Name</th>
-                  <td>Jane</td>
+                  <td><%= applicant.firstname %></td>
               </tr>
               <tr>
                   <th>Last Name</th>
-                  <td>Doe</td>
+                  <td><%= applicant.lastname %></td>
               </tr>
               <tr>
                   <th>Email Address</th>
-                  <td>somebody@example.com</td>
+                  <td><%= applicant.email %></td>
               </tr>
               <tr>
                   <th>Phone Number</th>
-                  <td>1234567890</td>
+                  <td><%= applicant.phone %></td>
               </tr>
+              <tr>
+                <th>Street Number</th>
+                <td><%= applicant.streetnumber %></td>
+            </tr>
+            <tr>
+                <th>Street Name</th>
+                <td><%= applicant.streetname %></td>
+            </tr>
+            <tr>
+                <th>City/County/Village</th>
+                <td><%= applicant.city %></td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td><%= applicant.state %></td>
+            </tr>
               <tr>
                   <th>ZIP Code</th>
-                  <td>60532</td>
+                  <td><%= applicant.zipcode %></td>
               </tr>
               <tr>
-                  <th>Services interested in</th>
-                  <td>Personal Care</td>
+                  <th>Work Shift(s)</th>
+                  <td><%= applicant.workshifts %></td>
               </tr>
+              <tr>
+                <th>Work Day(s)</th>
+                <td><%= applicant.workdays %></td>
+            </tr>
+            <tr>
+                <th>Skills</th>
+                <td><%= applicant.skills %></td>
+            </tr>
+            <tr>
+                <th>Work Permit</th>
+                <td><%= applicant.workpermit %></td>
+            </tr>
               <tr>
                   <th>Best Contact Time</th>
-                  <td>Any time</td>
+                  <td><%= applicant.bestcontacttime %></td>
               </tr>
               <tr>
-                  <th>Message</th>
-                  <td>Type your message here.</td>
-              </tr>
-              <tr>
+                <th>Resume</th>
+                <td><%= applicant.resume %></td>
+            </tr>
+            <tr>
+                <th>Cover Letter</th>
+                <td><%= applicant.coverletter %></td>
+            </tr>
+            <tr>
                   <th>Source</th>
-                  <td>Friend/relative/acquaintance</td>
+                  <td><%= applicant.source %></td>
               </tr>
               <tr>
                   <th>Mailing List</th>
-                  <td>No</td>
+                  <td><%= applicant.mailinglist %></td>
+              </tr>
+              <tr>
+                  <td><input type="submit" value="SUBMIT" id="<%=applicant._id.toString()%>"></td>
+                  <input type="hidden" id="appID" name="appID" value="<%=applicant._id.toString()%>">
+                 
               </tr>
           </table>
       </div>
+      </form>
+      <hr>
       <br>
       <br>
     </div>

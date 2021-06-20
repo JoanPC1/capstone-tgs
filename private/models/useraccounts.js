@@ -11,7 +11,9 @@ const userAccountSchema = new mongoose.Schema({
     username: String,
     password: String,   
     secretquestion: String,
-    secretanswer: String
+    secretanswer: String,
+    approve: String,
+    confirm: String,
 });
 
 module.exports = mongoose.model('userAccounts', userAccountSchema);
