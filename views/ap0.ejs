@@ -27,7 +27,7 @@
       
       <form action="editapplicant" method="POST">
       <div class="table">
-          <table>
+          <table><%- myCss.style %>
            
               <tr> 
                   <th>Applicant No.</th>
@@ -113,12 +113,10 @@
               <tr>
                   <td><input type="submit" value="SUBMIT" id="<%=applicant._id.toString()%>"></td>
                   <input type="hidden" id="appID" name="appID" value="<%=applicant._id.toString()%>">
-                 
               </tr>
           </table>
       </div>
       </form>
-      <hr>
       <br>
       <br>
     </div>

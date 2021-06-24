@@ -8,25 +8,40 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         
     <link href="../css/styles.css" type="text/css" rel="stylesheet">
+
     <script> 
+    function assigntime() {
+  console.log(document.getElementById("bbb").value);
+          document.getElementById("specifytime").value = document.getElementById("bbb").value;
+}
+
     function selectHandler() {
         var x = document.getElementById("bestcontacttime").value;
+        console.log(x);
         if(x=="other") {    
-            document.getElementById("specify").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"My best contact time is...\">";
+            document.getElementById("timespecify").innerHTML = "<input id=\"bbb\" type=\"text\" onBlur=\"assigntime()\" placeholder=\"My best contact time is...\">";
       }
       else {
-        document.getElementById("specify").innerHTML ="";
+        document.getElementById("specifytime").value = x;
+        document.getElementById("timespecify").innerHTML ="";
       }
     }
       </script>
 
 <script> 
+function assignvalue() {
+  console.log(document.getElementById("aaa").value);
+          document.getElementById("specifysource").value = document.getElementById("aaa").value;
+}
+
   function sourceHandler() {
       var x = document.getElementById("source").value;
-      if(x=="other") {    
-          document.getElementById("sourcespecify").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"I learned about you from...\">";
+      console.log(x);
+      if(x=="other") {           
+          document.getElementById("sourcespecify").innerHTML = "<input id=\"aaa\" type=\"text\" onBlur=\"assignvalue()\" placeholder=\"I learned about you from...\">";
     }
     else {
+      document.getElementById("specifysource").value = x;
       document.getElementById("sourcespecify").innerHTML ="";
     }
   }
@@ -74,25 +89,27 @@
         <br>
         <br>
         <h3>Service(s) you're interested in <span>(select all that apply)</span>:</h3>
-        <input type="checkbox" name="servicesinterestedin" checked>Personal Care</input>
+        <input type="checkbox" name="servicesinterestedin" value="Personal Care" checked>Personal Care</input>
         <br>
-        <input type="checkbox" name="servicesinterestedin">Companion/sitter</input>
+        <input type="checkbox" name="servicesinterestedin" value="Companion or sitter">Companion/sitter</input>
         <br>
-        <input type="checkbox" name="servicesinterestedin">Homemaking</input>
+        <input type="checkbox" name="servicesinterestedin" value="Homemaking">Homemaking</input>
         <br>
-        <input type="checkbox" name="servicesinterestedin">I'm not sure</input> (we'll help you figure out your options)
+        <input type="checkbox" name="servicesinterestedin" value="Not sure">I'm not sure</input> (we'll help you figure out your options)
         <br>
-        <input type="checkbox" name="servicesinterestedin">I want to ask about something else (specify in the message box below)</input>
+        <input type="checkbox" name="servicesinterestedin" value="Wants to ask about something else">I want to ask about something else (specify in the message box below)</input>
         <br>
         <br>        
         <label for="bestcontacttime"><h3>Best contact time:</h3></label>
         <select name="bestcontacttime" id="bestcontacttime" onchange="selectHandler()" required>
-        <option value="anytime">Any time</option>
+        <option value="select">Select your best contact time below:</option>
+        <option value="any time">Any time</option>
         <option value="morning">Morning 9:00am-12:00pm</option>
         <option value="afternoon">Afternoon 1:00pm-5:00pm</option>
         <option value="other">Other - please specify</option>
         </select>
-        <div id="specify"></div>        
+        <input type="hidden" id="specifytime" name="specifytime">
+        <div id="timespecify"></div>        
         <br>
         
         <label for="message"><h3>Include a message <span>(optional)</span>:</h3></label>
@@ -102,25 +119,28 @@
         <br>
         <label for="source"><h3>How did you learn about us?</h3></label>
         <select name="source" id="source" onchange="sourceHandler()" required;>
-          <option value="friend" selected>Friend/relative/acquaintance</option>
-          <option value="church">Church bulletin board</option>
-          <option value="assistedliving">Assisted living/retirement home</option>
-          <option value="nursing">Nursing/healthcare facility</option>
-          <option value="magazine">Magazine advertisement</option>
-          <option value="internet">Internet search</option>
-          <option value="other" id="other">Other - please specify</option>
+          <option value="select">Select your source below:</option>
+          <option value="friend or relative or acquaintance">Friend/relative/acquaintance</option>
+          <option value="church bulletin board">Church bulletin board</option>
+          <option value="assisted living">Assisted living</option>
+          <option value="retirement home">Retirement home</option>
+          <option value="nursing facility">Nursing home/skilled nursing facility</option>
+          <option value="healthcare facility">Healthcare facility (hospital or clinic)</option>
+          <option value="magazine ad">Magazine advertisement</option>
+          <option value="internet search">Internet search</option>
+          <option value="other">Other - please specify</option>
         </select>
+        <input type="hidden" id="specifysource" name="specifysource">
         <div id="sourcespecify"></div>
-        
         <br>
         <label for="mailinglist"><h3>Would you like to be added to our mailing list to receive service updates and announcements? <span>You can change your preference by informing us at any time.</span></h3></label>
         <br>
-        <input type="radio" name="mailinglist" checked>Yes, add me to your mailing list.</input>
+        <input type="radio" name="mailinglist" value="Yes" checked>Yes, add me to your mailing list.</input>
         <br>
-        <input type="radio" name="mailinglist">No, don't add me to your mailing list. (You will still receive communications related to your transactions.)</input>
+        <input type="radio" name="mailinglist" value="No">No, don't add me to your mailing list. (You will still receive communications related to your transactions.)</input>
         <br>
         <br>
-        <img src="captchaGoesHere" id="captchaimg" > <!--add captcha here-->
+        <img src="/captcha.jpg" id="captchaimg"> 
         <br>
        <label for="captcha">Enter the code above here:</label>
        <input id="captcha" name="captcha" type="text">

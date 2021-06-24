@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const userAccountSchema = new mongoose.Schema({
     accountnumber: String,
-    accountcreationdate: Date,
+    accountcreationdate: String,
     firstname: String,
     lastname: String,
     email: String,

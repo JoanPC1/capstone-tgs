@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const customerServiceSchema = mongoose.Schema({
-    transactionnumber: Number,
+    transactionnumber: String,
     transactiondate: String,
     firstname: String,
     lastname: String,

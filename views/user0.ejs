@@ -23,51 +23,69 @@
       <br>
       <h2>Account Approval Requests</h2>
       <br>
-      <script type="text/javascript">
-        function editid(clicked_id)
-        {
-            alert(clicked_id);
-            window.location.href = 'admin/edituser/' + clicked_id;
-        }
-      </script>
+      <form action="editaccount" method="POST">
         <div class="table">
         <table>
-          <thead>
-             <tr>
+            <tr>
               <th>Account Number</th>
-              <th>Account Creation Date/Time</th>
-             <th>First Name</th>
-             <th>Last Name</th>
-             <th>Email Address</th>
-             <th>Phone Number</th>
-             <th>ZIP Code</th>
-             <th>Username</th>
-             <th>Approve</th> <!----add internal handler----> 
-             <th>Confirm</th>
-             </tr>
-            </thead>
-            <tbody>
-                <% users.forEach(function(user){  %>
-              <tr>
-                <td><%= user.accountnumber %></td>
+              <td><input type='text' name="accountnumber" id="accountnumber" value = <%= user.accountnumber %>></input></td>
+            </tr>
+            <tr>
+                <th>Account Creation Date/Time</th>
                 <td><%= user.accountcreationdate %></td>
+            </tr>
+            <tr>
+                <th>First Name</th>
                 <td><%= user.firstname %></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
                 <td><%= user.lastname %></td>
-                <td><%= user.email %></td>                
+            </tr>
+            <tr>
+                <th>Email Address</th>
+                <td><%= user.email %></td> 
+            </tr>
+            <tr>
+                <th>Phone Number</th>
                 <td><%= user.phone %></td>
+            </tr>
+            <tr>
+                <th>ZIP Code</th>
                 <td><%= user.zipcode %></td>
+            </tr>
+            <tr>
+                <th>Username</th>
                 <td><%= user.username %></td>
-                <td><%= user.approve %>
-                  <select name="approve" id="approve" required>
-                  <option value="yes" selected>Yes</option>
-                  <option value="no">No</option></select></td>
-                <td><%= user.confirm %><a href=#>Sure</a></td>
-                <td> <button id='<%=user._id.toString()%>' onClick="editid(this.id)"> Edit </button></td>
-             </tr>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><%= user.password %></td>
+            </tr>
+            <tr>
+                <th>Secret Question</th>
+                <td><%= user.secretquestion %></td>
+            </tr>
+            <tr>
+                <th>Secret Answer</th>
+                <td><%= user.secretanswer %></td>     
+            </tr>
+            <tr>
+                <th>Approve</th>
+                <td><%= user.approve %></td>
+            </tr>
+            <tr>
+                <th>Confirm</th>
+                <td><%= user.confirm %></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="SUBMIT" id="<%=user._id.toString()%>"></td>
+                <input type="hidden" id="userID" name="userID" value="<%=user._id.toString()%>">
+              </tr>
             </tbody>
-            <%})%>
             </table>     
       </div>
+    </form>
     <br>
     <br>
     </div>

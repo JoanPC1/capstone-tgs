@@ -24,12 +24,12 @@
       <br>
       <h2>Transaction Details</h2>
       <br>
+      <form action="edittransaction" method="POST">
       <div class="table">
           <table>
-            <% transactions.forEach(function(transaction){  %>
-              <tr> 
+                <tr> 
                   <th>Transaction No.</th>
-                  <td><%= transaction.transactionnumber %></td>     
+                  <td><input type='text' name="transactionnumber" id="transactionnumber" value = <%= transaction.transactionnumber %>></input></td>    
               </tr>
               <tr>
                 <th>Transaction Date/Time</th>
@@ -75,9 +75,13 @@
                   <th>Mailing List</th>
                   <td><%= transaction.mailinglist %></td>
               </tr>
-              <%})%>
+              <tr>
+                <td><input type="submit" value="SUBMIT" id="<%=transaction._id.toString()%>"></td>
+                <input type="hidden" id="trID" name="trID" value="<%=transaction._id.toString()%>">
+              </tr>
           </table>
-      </div>
+        </div>
+        </form>
       <br>
       <br>
     </div>

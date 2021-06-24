@@ -39,44 +39,54 @@ router.get("/careers", function(req, res) {
 });
 
 router.post("/processcontact", function(req, res) {
-    var application = new customerServiceSchema;
-    application.firstname = req.body.firstname;
-    application.lastname = req.body.lastname;
-    application.email = req.body.email;
-    application.phone = req.body.phone;
-    application.zipcode = req.body.zipcode;
-    application.servicesinterestedin = req.body.servicesinterestedin;
-    application.bestcontactime = req.body.bestcontactime;
-    application.message = req.body.message;
-    application.source = req.body.source;
-    application.mailinglist = req.body.mailinglist;
-    application.save().then(savedDoc => {
+    var transaction = new customerServiceSchema;
+    var today = new Date();
+    console.log(req.body);
+
+    transaction.transactiondate =
+    (today.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+    transaction.firstname = req.body.firstname;
+    transaction.lastname = req.body.lastname;
+    transaction.email = req.body.email;
+    transaction.phone = req.body.phone;
+    transaction.zipcode = req.body.zipcode;
+    transaction.servicesinterestedin = req.body.servicesinterestedin;
+    transaction.bestcontacttime = req.body.specifytime;
+    transaction.message = req.body.message;
+    transaction.source = req.body.specifysource;
+    transaction.mailinglist = req.body.mailinglist;
+    transaction.save().then(savedDoc => {
         res.sendFile(path.join(__dirname, "../html/contact2.html")); // true
       });
 
 });
 
 router.post("/processapplication", function(req, res) {
-    var application = new jobApplicationSchema;
-    application.firstname = req.body.firstname;
-    application.lastname = req.body.lastname;
-    application.email = req.body.email;
-    application.phone = req.body.phone;
-    application.streetnumber = req.body.streetnumber;
-    application.streetname = req.body.streetname;
-    application.city = req.body.city;
-    application.state = req.body.state;
-    application.zipcode = req.body.zipcode;
-    application.workshifts = req.body.workshifts;
-    application.workdays = req.body.workdays;
-    application.skills = req.body.skills;
-    application.workpermit = req.body.workpermit;
-    application.bestcontactime = req.body.bestcontactime;
-    application.resumes = req.body.resumes;
-    application.coverletter = req.body.coverletter;
-    application.source = req.body.source;
-    application.mailinglist = req.body.mailinglist;
-    application.save().then(savedDoc => {
+    var applicant = new jobApplicationSchema;
+    var today = new Date();
+    console.log(req.body);
+
+    applicant.applicationdate = 
+    (today.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+    applicant.firstname = req.body.firstname;
+    applicant.lastname = req.body.lastname;
+    applicant.email = req.body.email;
+    applicant.phone = req.body.phone;
+    applicant.streetnumber = req.body.streetnumber;
+    applicant.streetname = req.body.streetname;
+    applicant.city = req.body.city;
+    applicant.state = req.body.state;
+    applicant.zipcode = req.body.zipcode;
+    applicant.workshifts = req.body.workshifts;
+    applicant.workdays = req.body.workdays;
+    applicant.skills = req.body.skills;
+    applicant.workpermit = req.body.workpermit;
+    applicant.bestcontacttime = req.body.specifytime;
+    applicant.resume = req.body.resume;
+    applicant.coverletter = req.body.coverletter;
+    applicant.source = req.body.specifysource;
+    applicant.mailinglist = req.body.mailinglist;
+    applicant.save().then(savedDoc => {
         res.sendFile(path.join(__dirname, "../html/careers2.html")); // true
       });
 });
