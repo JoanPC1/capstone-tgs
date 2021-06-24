@@ -28,22 +28,26 @@
         <input type="text" name="lastname" id="lastname" placeholder="Doe" required>
         <br>
         <label for="email">Email Address:</label> 
-        <input type="text" name="email" id="email" placeholder="somebody@example.com">
+        <input type="email" name="email" id="email" placeholder="somebody@example.com" required>
         <br>
         <label for="phone">Phone Number:</label> 
-        <input type="text" name="phone" id="phone" placeholder="1234567890">
+        <input type="text" name="phone" id="phone" placeholder="1234567890" required>
+        <br>
+        <label for="zipcode">Zip Code:</label> 
+        <input type="number" name="zipcode" id="zipcode" placeholder="60532" required>
         <br>
         <label for="username">Create a username:</label>
-        <input type="text" name="username" placeholder="JaneDoe85" required>
+        <input type="text" pattern=".{4,10}" name="username" placeholder="JaneDoe85" required title="Username must be 4 to 10 characters">
+        <p>Username must contain a minimum of 4 and a maximum of 10 characters.</p>
         <br>
         <label for="password">Create a password:</label>
-        <input type="text" name="password" placeholder="********" required>
-        <p>Passwords must contain at least eight (8) characters.</p>
+        <input type="password" pattern=".{8,12}" name="password" placeholder="********" required title="Password must be 8 to 12 characters">
+        <p>Password must contain a minimum of 8 and a maximum of 12 characters.</p>
         <br> 
         <div class="secretthings"><label for="secrets"><h3>Secret question:</h3></label>
           <br>
-          <select id="secrets" name="secretquestion">
-            <option value="friend" selected>Who was your childhood best friend?
+          <select id="secrets" name="secretquestion" required>
+            <option value="friend" selected>Who was your childhood best friend?</option>
             <option value="spouse">Where did you meet your spouse?</option> 
             <option value="person">Which famous person do you want to meet?</option> 
             <option value="teacher">Who was your favorite teacher?</option> 
@@ -57,7 +61,7 @@
         <p>I hereby declare that all information I have provided in this application is true and correct. I understand that any willful dishonesty or misrepresentation may result in the immediate termination of my employment. It shall be my responsibility to ensure that all information I have provided is up-to-date, and to update The Good Shepherd Home Care, LLC promptly of any changes to said information.</p>
         <p>I declare that I will only use all information contained herein, and any other information that I am allowed access to, for lawful purposes. I understand that I will be solely liable for any and all damages resulting from my inappropriate or unlawful use or disclosure of said information.</p>
         <br>
-        <img src="captchaGoesHere" id="captchaimg" > <!---add captcha here-->
+        <img src="/captcha.jpg" id="captchaimg" > 
         <br>
        <label for="captcha">Enter the code above here:</label>
        <input id="captcha" name="captcha" type="text">

@@ -48,7 +48,7 @@ input[type="submit"]:hover, input[type="button"]:hover {
     background-color: #1abc9c;
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
     display: block;
     border: 1px solid lightsteelblue;
     font-size: 20px;
@@ -217,7 +217,7 @@ span {
     padding-left: 1%;
   }
 
-  table, th, td {
+  table, tr, th, td {
       border: 1px solid rgb(84, 106, 128);
       font-size: 20px;
     }

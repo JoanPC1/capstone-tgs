@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 const jobApplicationSchema = mongoose.Schema({
-    applicationnumber: Number,
+    applicantnumber: String,
     applicationdate: String,
     firstname: String,
     lastname: String,
@@ -22,7 +22,6 @@ const jobApplicationSchema = mongoose.Schema({
     coverletter: String,
     source: String,
     mailinglist: String,
-    action: String
 });
 
 module.exports = mongoose.model('jobApplications', jobApplicationSchema);

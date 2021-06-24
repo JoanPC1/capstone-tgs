@@ -8,40 +8,55 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="../css/styles.css" type="text/css" rel="stylesheet">
 
-    <script> 
-        function selectHandler() {
-            var x = document.getElementById("bestcontacttime").value;
-            if(x=="other") {    
-                document.getElementById("specify").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"My best contact time is...\">";
+        <script> 
+          function assigntime() {
+        console.log(document.getElementById("bbb").value);
+                document.getElementById("specifytime").value = document.getElementById("bbb").value;
+      }
+      
+          function selectHandler() {
+              var x = document.getElementById("bestcontacttime").value;
+              console.log(x);
+              if(x=="other") {    
+                  document.getElementById("timespecify").innerHTML = "<input id=\"bbb\" type=\"text\" onBlur=\"assigntime()\" placeholder=\"My best contact time is...\">";
+            }
+            else {
+              document.getElementById("specifytime").value = x;
+              document.getElementById("timespecify").innerHTML ="";
+            }
+          }
+            </script>
+      
+      <script> 
+      function assignvalue() {
+        console.log(document.getElementById("aaa").value);
+                document.getElementById("specifysource").value = document.getElementById("aaa").value;
+      }
+      
+        function sourceHandler() {
+            var x = document.getElementById("source").value;
+            console.log(x);
+            if(x=="other") {           
+                document.getElementById("sourcespecify").innerHTML = "<input id=\"aaa\" type=\"text\" onBlur=\"assignvalue()\" placeholder=\"I learned about you from...\">";
           }
           else {
-            document.getElementById("specify").innerHTML ="";
+            document.getElementById("specifysource").value = x;
+            document.getElementById("sourcespecify").innerHTML ="";
           }
         }
           </script>
-
-<script> 
-    function sourceHandler() {
-        var x = document.getElementById("source").value;
-        if(x=="other") {    
-            document.getElementById("sourcespecify").innerHTML = "<input id=\"xxx\" type=\"text\" placeholder=\"I learned about you from...\">";
-      }
-      else {
-        document.getElementById("sourcespecify").innerHTML ="";
-      }
-    }
-      </script>
+      
     </head>
         
 <body>
   <div class="container-fluid">
-    <a href="/" class="active"><img src="../img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>
-     <a href="/">Home</a>
-     <a href="about">About</a>
-     <a href="testimonials">Testimonials</a>
-     <a href="services">Services</a>
-     <a href="faq">FAQ</a>
-     <a href="contact">Contact</a>
+    <a href="http://localhost:3000/" class="active"><img src="../img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>
+     <a href="http://localhost:3000/">Home</a>
+     <a href="http://localhost:3000/about">About</a>
+     <a href="http://localhost:3000/testimonials">Testimonials</a>
+     <a href="http://localhost:3000/services">Services</a>
+     <a href="http://localhost:3000/faq">FAQ</a>
+     <a href="http://localhost:3000/contact">Contact</a>
     </div>
 
     <div id="all" class="container-fluid">
@@ -61,7 +76,9 @@
         <input type="text" name="lastname" id="lastname" placeholder="Doe" required>
         <br>
         <label for="email">Email Address:</label> 
-        <input type="text" name="email" id="email" placeholder="somebody@example.com" required>
+        <br>
+        <input type="email" name="email" id="email" placeholder="somebody@example.com" required>
+        <br>
         <br>
         <label for="phone">Phone Number:</label>
         <input type="number" name="phone" id="phone" placeholder="1234567890" required>
@@ -72,7 +89,7 @@
         <label for="streetname">Street Name:</label>
         <input type="text" name="streetname" id="streetname" placeholder="Lacey Avenue" required>
         <br>
-        <label for="city">City:</label>
+        <label for="city">City/County/Village:</label>
         <input type="text" name="city" id="city" placeholder="Lisle" required>
         <br>
         <label for="state">State:</label>
@@ -85,90 +102,100 @@
         <h3>Work schedule preferences <span>(select all that apply)</span>:</h3>
         <label for="workshifts"><h4>Work shift(s):</h4></label>
         <br>
-        <input type="checkbox" name="workshifts" checked>Morning</input>
+        <input type="checkbox" name="workshifts" value="Any time" checked>Any time</input>
         <br>
-        <input type="checkbox" name="workshifts">Afternoon</input>
+        <input type="checkbox" name="workshifts" value="Morning">Morning</input>
         <br>
-        <input type="checkbox" name="workshifts">Evening</input>
+        <input type="checkbox" name="workshifts" value="Afternoon">Afternoon</input>
         <br>
-        <input type="checkbox" name="workshifts">Overnight</input>
+        <input type="checkbox" name="workshifts" value="Evening">Evening</input>
+        <br>
+        <input type="checkbox" name="workshifts" value="Overnight">Overnight</input>
         <br>
         <br>
         <label for="workdays"><h4>Work day(s):</h4></label>
         <br>
-        <input type="checkbox" name="workdays" checked>Sunday</input>
+        <input type="checkbox" name="workdays" value="Any day" checked>Any day</input>
         <br>
-        <input type="checkbox" name="workdays">Monday</input>
+        <input type="checkbox" name="workdays" value="Sunday">Sunday</input>
         <br>
-        <input type="checkbox" name="workdays">Tuesday</input>
+        <input type="checkbox" name="workdays" value="Monday">Monday</input>
         <br>
-        <input type="checkbox" name="workdays">Wednesday</input>
+        <input type="checkbox" name="workdays" value="Tuesday">Tuesday</input>
         <br>
-        <input type="checkbox" name="workdays">Thursday</input>
+        <input type="checkbox" name="workdays" value="Wednesday">Wednesday</input>
         <br>
-        <input type="checkbox" name="workdays">Friday</input>
+        <input type="checkbox" name="workdays" value="Thursday">Thursday</input>
         <br>
-        <input type="checkbox" name="workdays">Saturday</input>   
+        <input type="checkbox" name="workdays" value="Friday">Friday</input>
+        <br>
+        <input type="checkbox" name="workdays" value="Saturday">Saturday</input>   
         <br>
         <br>
         <label for="skills"><h3>Skills <span>(select all that apply)</span>:</h3></label>
         <br>
-        <input type="checkbox" name="skills" checked>Personal Care</input>
+        <input type="checkbox" name="skills" value="Personal Care" checked>Personal Care</input>
         <br>
-        <input type="checkbox" name="skills">Companion/sitter</input>
+        <input type="checkbox" name="skills" value="Companion or Sitter">Companion/sitter</input>
         <br>
-        <input type="checkbox" name="skills">Homemaking</input>
+        <input type="checkbox" name="skills" value="Homemaking">Homemaking</input>
         <br>
         <br>
         <label for="workpermit"><h3>Are you legally authorized to work in the United States? <span>We can only accept applications from persons authorized to work in the United States.</span></h3></label>
         <br>
-        <input type="radio" name="workpermit" checked>Yes, I am a citizen/permanent resident / I have a valid work permit.</input>
+        <input type="radio" name="workpermit" value="Yes" checked>Yes, I am a citizen/permanent resident / I have a valid work permit.</input>
         <br>
-        <input type="radio" name="workpermit">No, I am not authorized to work in the United States.</input>
+        <input type="radio" name="workpermit" value="No">No, I am not authorized to work in the United States.</input>
         <br>
         <br>
         <label for="bestcontacttime"><h3>Best contact time:</h3></label>
-        <select name="bestcontacttime" id="contacttime" onchange="selectHandler()" required;>
-        <option value="anytime" selected>Any time</option>
+        <select name="bestcontacttime" id="bestcontacttime" onchange="selectHandler()" required;>
+        <option value="select">Select your best contact time below:</option>
+        <option value="any time">Any time</option>
         <option value="morning">Morning 9:00am-12:00pm</option>
         <option value="afternoon">Afternoon 1:00pm-5:00pm</option>
-        <option value="other" id="other">Other - please specify</option>
+        <option value="other">Other - please specify</option>
         </select>
-        <div id="specify"></div>
+        <input type="hidden" id="specifytime" name="specifytime">
+        <div id="timespecify"></div>
         <br>
                   
         <h3>Upload your resume:</h3>
-        <input type="file" name="resumes" required>
+        <input type="file" name="resume" id="resume" required>
         <br>
         <br>
         <h3>Upload your cover letter:</h3>
-        <input type="file" name="coverletter" required>
+        <input type="file" name="coverletter" id="coverletter" required>
         <br>
         <br>
         <label for="source"><h3>How did you learn about us?</h3></label>
         <select name="source" id="source" onchange="sourceHandler()" required;>
-        <option value="friend" selected>Friend/relative/acquaintance</option>
-        <option value="church">Church bulletin board</option>
-        <option value="assistedliving">Assisted living/retirement home</option>
-        <option value="nursing">Nursing/healthcare facility</option>
-        <option value="magazine">Magazine advertisement</option>
-        <option value="internet">Internet search</option>
-        <option value="other" id="other">Other - please specify</option>
-        </select>
-        <div id="sourcespecify"></div>
+        <option value="select">Select your source below:</option>
+        <option value="friend or relative or acquaintance">Friend/relative/acquaintance</option>
+        <option value="church bulletin board">Church bulletin board</option>
+        <option value="assisted living">Assisted living</option>
+        <option value="retirement home">Retirement home</option>
+        <option value="nursing facility">Nursing home/skilled nursing facility</option>
+        <option value="healthcare facility">Healthcare facility (hospital or clinic)</option>
+        <option value="magazine ad">Magazine advertisement</option>
+        <option value="internet search">Internet search</option>
+        <option value="other">Other - please specify</option>
+      </select>
+      <input type="hidden" id="specifysource" name="specifysource">
+        <div id="sourcespecify"></div>      
         <br>
         <label for="mailinglist"><h3>Would you like to be added to our mailing list to receive service updates and announcements? <span>You can change your preference by informing us at any time.</span></h3></label>
         <br>
-        <input type="radio" name="mailinglist" checked>Yes, add me to your mailing list.</input>
+        <input type="radio" name="mailinglist" value="Yes" checked>Yes, add me to your mailing list.</input>
         <br>
-        <input type="radio" name="mailinglist">No, don't add me to your mailing list. (You will still receive communications related to your transactions.)</input>
+        <input type="radio" name="mailinglist" value="No">No, don't add me to your mailing list. (You will still receive communications related to your transactions.)</input>
         <br>
         <br>
         <label for="declaration"><input type="checkbox" name="declaration" id="declaration" required> <b>Declaration and Authorization</b></label>
         <p>I hereby declare that all information I have provided in this application is true and correct. I understand that any willful dishonesty or misrepresentation may result in the refusal of this application or immediate termination of my employment. It shall be my responsibility to ensure that all information I have provided is up-to-date, and to update The Good Shepherd Home Care, LLC promptly of any changes to said information. I understand that I am solely liable for any and all damages resulting from any misrepresentation in my application.</p>
         <p>I authorize The Good Shepherd Home Care, LLC to retain my application for future employment opportunities, and to conduct background, reference, health and criminal checks, and other procedures relevant to my application, in accordance with applicable laws on the collection, use and disclosure of personal information.</p> 
         <br>
-        <img src="captchaGoesHere" id="captchaimg" > <!--add captcha here-->
+        <img src="/captcha.jpg" id="captchaimg"> 
         <br>
        <label for="captcha">Enter the code above here:</label>
        <input id="captcha" name="captcha" type="text">

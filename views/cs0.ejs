@@ -20,98 +20,68 @@
       <div id="all" class="container-fluid">
       <br>
       <br>
-      <h1>JOB APPLICATIONS</h1>
+      <h1>CUSTOMER SERVICE</h1>
       <br>
-      <h2>Applicant Details</h2>
+      <h2>Transaction Details</h2>
       <br>
+      <form action="edittransaction" method="POST">
       <div class="table">
           <table>
-              <tr> 
-                  <th>Applicant No.</th>
-                  <td>0</td>     
+                <tr> 
+                  <th>Transaction No.</th>
+                  <td><input type='text' name="transactionnumber" id="transactionnumber" value = <%= transaction.transactionnumber %>></input></td>    
               </tr>
               <tr>
-                <th>Application Date/Time</th>
-                <td>MM/DD/YYYY 00:00</td>
+                <th>Transaction Date/Time</th>
+                <td><%= transaction.transactiondate %></td>
             </tr>
-                  <tr>
+              <tr>
                   <th>First Name</th>
-                  <td>Jane</td>
+                  <td><%= transaction.firstname %></td>
               </tr>
               <tr>
                   <th>Last Name</th>
-                  <td>Doe</td>
+                  <td><%= transaction.lastname %></td>
               </tr>
               <tr>
                   <th>Email Address</th>
-                  <td>somebody@example.com</td>
+                  <td><%= transaction.email %></td>
               </tr>
               <tr>
                   <th>Phone Number</th>
-                  <td>1234567890</td>
+                  <td><%= transaction.phone %></td>
               </tr>
-              <tr>
-                <th>Street Number</th>
-                <td>123</td>
-            </tr>
-            <tr>
-                <th>Street Name</th>
-                <td>Lacey Avenue</td>
-            </tr>
-            <tr>
-                <th>City/County/Village</th>
-                <td>Lisle</td>
-            </tr>
-            <tr>
-                <th>State</th>
-                <td>Illinois</td>
-            </tr>
               <tr>
                   <th>ZIP Code</th>
-                  <td>60532</td>
+                  <td><%= transaction.zipcode %></td>
               </tr>
               <tr>
-                  <th>Work Shift(s)</th>
-                  <td>Morning</td>
+                  <th>Services interested in</th>
+                  <td><%= transaction.servicesinterestedin %></td>
               </tr>
-              <tr>
-                <th>Work Day(s)</th>
-                <td>Sunday</td>
-            </tr>
-            <tr>
-                <th>Skills</th>
-                <td>Personal Care</td>
-            </tr>
-            <tr>
-                <th>Work Permit</th>
-                <td>Yes</td>
-            </tr>
               <tr>
                   <th>Best Contact Time</th>
-                  <td>Any time</td>
+                  <td><%= transaction.bestcontacttime %></td>
               </tr>
               <tr>
-                <th>Resume</th>
-                <td>View</td>
-            </tr>
-            <tr>
-                <th>Cover Letter</th>
-                <td>View</td>
-            </tr>
-            <tr>
+                  <th>Message</th>
+                  <td><%= transaction.message %></td>
+              </tr>
+              <tr>
                   <th>Source</th>
-                  <td>Friend/relative/acquaintance</td>
+                  <td><%= transaction.source %></td>
               </tr>
               <tr>
                   <th>Mailing List</th>
-                  <td>No</td>
+                  <td><%= transaction.mailinglist %></td>
               </tr>
               <tr>
-                <th>Action</th>
-                <td>None</td>
-            </tr>
+                <td><input type="submit" value="SUBMIT" id="<%=transaction._id.toString()%>"></td>
+                <input type="hidden" id="trID" name="trID" value="<%=transaction._id.toString()%>">
+              </tr>
           </table>
-      </div>
+        </div>
+        </form>
       <br>
       <br>
     </div>

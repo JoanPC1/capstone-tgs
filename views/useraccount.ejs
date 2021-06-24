@@ -12,44 +12,61 @@
     <body>
       <div class="container-fluid">
         <a href="http://localhost:3000/" class="active"><img src="../img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>
-        <a href="http://localhost:3000/admin">Admin Main</a>
+        <a href="http://localhost:3000/admin/cs">Customer Service</a>
         <a href="http://localhost:3000/admin/app">Job Applications</a>
       </div>
      
       <div id="all" class="container-fluid">
       <br>
       <br>
-      <h1>CUSTOMER SERVICE</h1>
+      <h1>ADMINISTRATOR MAIN PAGE</h1>
       <br>
-      <h2>Transaction List</h2>
+      <h2>Account Approval Requests</h2>
       <br>
-      <div class="table">
+      <script type="text/javascript">
+        function editid(clicked_id)
+        {
+            alert(clicked_id);
+            window.location.href = 'admin/edituser/' + clicked_id;
+        }
+      </script>
+        <div class="table">
         <table>
           <thead>
              <tr>
-             <th>Transaction No.</th>
-             <th>Transaction Date/Time</th>
+              <th>Account Number</th>
+              <th>Account Creation Date/Time</th>
              <th>First Name</th>
              <th>Last Name</th>
              <th>Email Address</th>
              <th>Phone Number</th>
              <th>ZIP Code</th>
-             <th>Mailing List</th>
+             <th>Username</th>
+             <th>Approve</th> <!----add internal handler----> 
+             <th>Confirm</th>
              </tr>
             </thead>
             <tbody>
+                <% users.forEach(function(user){  %>
               <tr>
-                <td><a href="http://localhost:3000/admin/cs0">0</a></td>
-                <td>MM/YY/YYYY 00:00</td>
-                <td>Jane</td>
-                <td>Doe</td>
-                <td>somebody@example.com</td>
-                <td>1234567890</td>
-                <td>60532</td>
-                <td>No</td>
-              </tr>
+                <td><%= user.accountnumber %></td>
+                <td><%= user.accountcreationdate %></td>
+                <td><%= user.firstname %></td>
+                <td><%= user.lastname %></td>
+                <td><%= user.email %></td>                
+                <td><%= user.phone %></td>
+                <td><%= user.zipcode %></td>
+                <td><%= user.username %></td>
+                <td><%= user.approve %>
+                  <select name="approve" id="approve" required>
+                  <option value="yes" selected>Yes</option>
+                  <option value="no">No</option></select></td>
+                <td><%= user.confirm %><a href=#>Sure</a></td>
+                <td> <button id='<%=user._id.toString()%>' onClick="editid(this.id)"> Edit </button></td>
+             </tr>
             </tbody>
-            </table>
+            <%})%>
+            </table>     
       </div>
     <br>
     <br>

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const customerServiceSchema = mongoose.Schema({
-    transactionnumber: Number,
+    transactionnumber: String,
     transactiondate: String,
     firstname: String,
     lastname: String,
@@ -13,7 +13,6 @@ const customerServiceSchema = mongoose.Schema({
     message: String,
     source: String,
     mailinglist: String,
-    action: String
 });
 
-module.exports = mongoose.model('customerService', customerServiceSchema);
+module.exports = mongoose.model("customerService", customerServiceSchema);

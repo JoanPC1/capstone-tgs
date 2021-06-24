@@ -23,6 +23,13 @@
       <br>
       <h2>Transaction List</h2>
       <br>
+      <script type="text/javascript">
+        function editid(clicked_id)
+        {
+            alert(clicked_id);
+            window.location.href = 'edittr/' + clicked_id;
+        }
+      </script>
       <div class="table">
         <table>
           <thead>
@@ -38,17 +45,21 @@
              </tr>
             </thead>
             <tbody>
+                <% transactions.forEach(function(transaction){  %>
               <tr>
-                <td><a href="http://localhost:3000/admin/cs0">0</a></td>
-                <td>MM/YY/YYYY 00:00</td>
-                <td>Jane</td>
-                <td>Doe</td>
-                <td>somebody@example.com</td>
-                <td>1234567890</td>
-                <td>60532</td>
-                <td>No</td>
+                <td><%= transaction.transactionnumber %></td>
+                <td><%= transaction.transactiondate %></td>
+                <td><%= transaction.firstname %></td>
+                <td><%= transaction.lastname %></td>
+                <td><%= transaction.email %></td>
+                <td><%= transaction.phone %></td>
+                <td><%= transaction.zipcode %></td>
+                <td><%= transaction.mailinglist %></td>
+
+                <td> <button id='<%=transaction._id.toString()%>' onClick="editid(this.id)"> Edit </button></td>
               </tr>
             </tbody>
+            <%})%>
             </table>
       </div>
     <br>
