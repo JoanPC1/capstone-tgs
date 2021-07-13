@@ -10,10 +10,17 @@
         <link href="../css/styles.css" type="text/css" rel="stylesheet">
 </head>
     <body>
+        <script>
+            function approval() {
+                var x = document.getElementById("approveselect").value;
+                document.getElementById("approve").value = x;
+            }
+        </script>
       <div class="container-fluid">
         <a href="http://localhost:3000/" class="active"><img src="../img/goodshepherd.jpg" id="logo" class="img-fluid" alt="Responsive image"></a>
         <a href="http://localhost:3000/admin/cs">Customer Service</a>
         <a href="http://localhost:3000/admin/app">Job Applications</a>
+        <a href="http://localhost:3000/admin/logout">Log Out</a>
       </div>
      
       <div id="all" class="container-fluid">
@@ -72,7 +79,10 @@
             </tr>
             <tr>
                 <th>Approve</th>
-                <td><%= user.approve %></td>
+                <td><input type='hidden' name="approve" id="approve" value = <%= user.approve %>></input>
+                    <select name="approveselect" id="approveselect" onchange="approval()" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No" selected>No</option></select></td>
             </tr>
             <tr>
                 <th>Confirm</th>
