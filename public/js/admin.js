@@ -5,10 +5,13 @@ const mongoose = require("mongoose");
 const email = require("../js/email")
 var crypto = require('crypto');
 const captchaSessionId = 'captcha';
+const generatetoken = require("../js/generatetoken");
 
 const userAccountSchema = require("../../private/models/useraccounts");
 const jobApplicationSchema = require("../../private/models/jobapplication");
 const customerServiceSchema = require("../../private/models/customerservice");
+const verifyToken = require("./verifytoken");
+const verifyAdmin = require("./verifyadmin");
 
 const mongoDB = "mongodb://127.0.0.1/my_database";
 mongoose.connect(mongoDB, { useNewUrlParser: true });
@@ -35,13 +38,21 @@ const checkCaptcha = (req, res, next) => {
 const checkSecurity = (req, res, next) => {
     console.log("Checking security");  
   
+    verifyToken(req, res);
     next();
   };
 const checkLogin = async (req, res, next) => {
     var password = crypto.createHash('sha256').update(req.body.password).digest('hex');
     var isfound = await userAccountSchema.exists({"username": req.body.username, "password": password});
     if (isfound) {
-        
+        var isapproved = await userAccountSchema.exists({"username": req.body.username, "approve": "Yes"});
+        if (!isapproved) {
+            res.send("Account is not yet approved");
+        }
+        var useraccount = await userAccountSchema.findOne({"username": req.body.username});
+        console.log(useraccount._id);
+        await generatetoken(res, useraccount.username, useraccount._id);
+        console.log(req.cookies);
         next()
     }
     else 
@@ -88,13 +99,26 @@ async function findphone(phone) {
 };
 
 //add filter - do not display approved
-router.get("/", checkSecurity, function(req, res) {
+router.get("/", verifyAdmin, function(req, res) {
+    console.log(req.username);
+    console.log(req);
+
     userAccountSchema.find(function (err, users) {
         if (err) return console.error(err);
         //console.log(users)
         res.render("useraccount", {users: users});
     });
     //res.sendFile(path.join(__dirname, "../html/admin.html"));
+});
+
+router.get("/logout", function(req, res) {
+    console.log(res.cookies);
+    res.cookie("token", "", {
+        httpOnly: true, 
+        secure: false,   
+        expires: new Date(1)
+    });
+    res.redirect('/admin');
 });
 
 router.post("/", [checkCaptcha, checkLogin, function(req, res) {
@@ -106,10 +130,12 @@ router.post("/", [checkCaptcha, checkLogin, function(req, res) {
     //res.sendFile(path.join(__dirname, "../html/admin.html"));
 }]);
 
-router.post("/edituser/editaccount", checkSecurity, function(req,res) {
+router.post("/edituser/editaccount", verifyToken, function(req,res) {
     var ID = req.body.userID;
     var id = new mongoose.Types.ObjectId(ID);
-    var test = userAccountSchema.findByIdAndUpdate(id, { accountnumber: req.body.accountnumber }, 
+    var approve = req.body.approve;
+    
+    var test = userAccountSchema.findByIdAndUpdate(id, { accountnumber: req.body.accountnumber, approve: req.body.approve }, 
         function(err, result){
 
             if(err){
@@ -128,7 +154,7 @@ router.post("/edituser/editaccount", checkSecurity, function(req,res) {
     res.redirect('/admin');
 });
 
-router.get("/edituser/:id", checkSecurity, function (req, res) {
+router.get("/edituser/:id", verifyToken, function (req, res) {
     userAccountSchema.findOne({_id: req.params.id}, function (err, users) {
         if (err) return console.error(err);
         //console.log(users);
@@ -136,7 +162,7 @@ router.get("/edituser/:id", checkSecurity, function (req, res) {
     });
 });
 
-router.post("/editappl/editapplicant", checkSecurity, function(req,res) {
+router.post("/editappl/editapplicant", verifyToken, function(req,res) {
     var ID = req.body.appID;
     var id = new mongoose.Types.ObjectId(ID);
     var test = jobApplicationSchema.findByIdAndUpdate(id, { applicantnumber: req.body.applicantnumber }, 
@@ -159,7 +185,7 @@ router.post("/editappl/editapplicant", checkSecurity, function(req,res) {
 });
 
 
-router.get("/edittr/:id", checkSecurity, function (req, res) {
+router.get("/edittr/:id", verifyToken, function (req, res) {
     customerServiceSchema.findOne({_id: req.params.id}, function (err, transactions) {
         if (err) return console.error(err);
         //console.log(transactions);
@@ -167,7 +193,7 @@ router.get("/edittr/:id", checkSecurity, function (req, res) {
     });
 });
 
-router.post("/edittr/edittransaction", checkSecurity, function(req,res) {
+router.post("/edittr/edittransaction", verifyToken, function(req,res) {
 
     var ID = req.body.trID;
     var id = new mongoose.Types.ObjectId(ID);
@@ -190,11 +216,11 @@ router.post("/edittr/edittransaction", checkSecurity, function(req,res) {
     res.redirect('/admin/cs');
 });
 
-router.get("/login", checkSecurity, function(req, res) {
+router.get("/login", function(req, res) {
     res.sendFile(path.join(__dirname, "../html/login.html"));
 });
 
-router.get("/cs", checkSecurity, function(req, res) {
+router.get("/cs", verifyToken, function(req, res) {
     customerServiceSchema.find(function (err, transactions) {
         if (err) return console.error(err);
         //console.log(transactions);
@@ -203,7 +229,10 @@ router.get("/cs", checkSecurity, function(req, res) {
    //res.sendFile(path.join(__dirname, "../html/csmain.html"));
 });
 
-router.get("/cs0", checkSecurity, function(req, res) {
+
+
+router.get("/cs0", verifyToken, function(req, res) {
+    console.log(req.cookies.token);
     customerServiceSchema.find(function (err, transactions) {
         if (err) return console.error(err);
         console.log(transactions);
@@ -221,7 +250,7 @@ router.get("/cs0", checkSecurity, function(req, res) {
     
 //});
 
-router.get("/app", checkSecurity, function(req, res) {
+router.get("/app", verifyToken, function(req, res) {
     jobApplicationSchema.find(function (err, applications) {
         if (err) return console.error(err);
         //console.log(applications);
@@ -231,7 +260,7 @@ router.get("/app", checkSecurity, function(req, res) {
 
 });
 
-router.get("/editappl/:id", checkSecurity, function (req, res) {
+router.get("/editappl/:id", verifyToken, function (req, res) {
     jobApplicationSchema.findOne({_id: req.params.id}, function (err, applications) {
         if (err) return console.error(err);
         //console.log(applications);
@@ -262,12 +291,29 @@ router.post("/submitaccount", [checkCaptcha, validatecreation, function (req,res
     user.secretquestion = req.body.secretquestion;
     user.secretanswer = req.body.secretanswer;
     user.save().then(savedDoc => {
+        console.log(user._id);
+        console.log(user.email);
         email(user._id, user.email);
         res.sendFile(path.join(__dirname, "../html/createaccount2.html"));
 });
 }]);
+
+router.get("/confirm/:id", function (req, res) {
+    var id = new mongoose.Types.ObjectId(req.params.id);
+    console.log(id);
+    userAccountSchema.findByIdAndUpdate(id, { "confirm" : "true" }, function(err, result) {
+        if (err) {
+          res.send(err);
+        } else {
+          res.send(result);
+        }
+      }
+  );
+
+});
+
 //add email confirmation handler
-router.post("/confirmemail", function (req,res) {
+router.post("/confirmemail", function (req, res) {
         res.sendFile(path.join(__dirname, "../html/createaccount3.html"));
 });
 

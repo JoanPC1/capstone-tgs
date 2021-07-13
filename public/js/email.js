@@ -1,22 +1,12 @@
 var nodemailer = require('nodemailer');
-var smtpTransport = require('nodemailer-smtp-transport');
-var transporter = nodemailer.createTransport(smtpTransport({
+
+var transporter = nodemailer.createTransport({
     service: 'gmail',
-    host: 'smtp.gmail.com',
     auth: {
-      user: 'joanscapstoneproject@gmail.com',
-      pass: 'Pushkinwushkin'
+        user: 'joanscapstoneproject@gmail.com',
+        pass: 'Pushkinwushkin'
     }
-  }));
-
-//var transporter = nodemailer.createTransport({
-  //service: 'gmail',
-  //auth: {
-    //user: 'joanscapstoneproject@gmail.com',
-    //pass: 'Pushkinwushkin'
-  //}
-//});
-
+});
 
 
 module.exports = function(message, email) {
@@ -24,8 +14,8 @@ module.exports = function(message, email) {
 var mailOptions = {
   from: 'joanscapstoneproject@gmail.com',
   to: email,
-  subject: 'Sending Email using Node.js',
-  text: message
+  subject: 'Confirm your email address at The Good Shepherd Home Care, LLC',
+  text: "Please click the following link to confirm your email address. If that doesn't work, copy and paste the link to your browser.  http://localhost:3000/admin/confirm/" + message
 };
 
 transporter.sendMail(mailOptions, function(error, info){
